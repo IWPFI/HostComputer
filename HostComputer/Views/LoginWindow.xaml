@@ -51,8 +51,7 @@
 
                 <Button Style="{DynamicResource CloseButtonStyle}" Command="{Binding CloseCommand}" CommandParameter="{Binding Path=.,RelativeSource={RelativeSource AncestorType=Window}}"/>
 
-                <TextBlock Name="ErrorMessage" Text="{Binding ErrorMsg}" Foreground="Red" TextWrapping="Wrap" Grid.Row="10"
-                           TextAlignment="Center"/>
+                <TextBlock Name="ErrorMessage" Text="{Binding ErrorMsg}" Foreground="Red" TextWrapping="Wrap" Grid.Row="10" TextAlignment="Center"/>
             </Grid>
         </Border>
         <Polygon Points="0 0,420,0,450 200 420 400 0 400" StrokeThickness="0" Stroke="White" HorizontalAlignment="Left">
