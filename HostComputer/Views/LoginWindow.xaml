@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HostComputer.Views"
+        xmlns:local="clr-namespace:HostComputer.Views"     
+        xmlns:base="clr-namespace:HostComputer.Base"
         mc:Ignorable="d" 
         Background="Transparent" 
         FontFamily="Microsoft YaHei"
@@ -12,7 +13,7 @@
         WindowStyle="None"
         AllowsTransparency="True" 
         WindowStartupLocation="CenterScreen"
-        SizeToContent="WidthAndHeight"        
+        SizeToContent="WidthAndHeight"   
         Title="LoginWindow">
     <Window.Resources>
         <ResourceDictionary Source="/Assets/Styles/LoginWindowStyle.xaml"/>
@@ -37,7 +38,9 @@
                 </StackPanel>
 
                 <TextBox Grid.Row="1" Style="{StaticResource UsernameTextBoxStyle}" Text="{Binding UserModel.UserName,UpdateSourceTrigger=PropertyChanged}"/>
-                <PasswordBox Grid.Row="2" Style="{StaticResource PasswordBoxStyle}"/>
+                <PasswordBox Grid.Row="2" Style="{StaticResource PasswordBoxStyle}"
+                             base:PasswordBoxHelper.Attach="true"
+                             base:PasswordBoxHelper.Password="{Binding UserModel.Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 <CheckBox Grid.Row="3" Content="记住登录信息" VerticalAlignment="Center" FontSize="10" VerticalContentAlignment="Center"/>
                 <TextBlock Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Hyperlink>忘记密码</Hyperlink>

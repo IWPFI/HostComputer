@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HostComputer.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,8 @@ namespace HostComputer.Views
     {
         public LoginWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            this.DataContext = new LoginViewModel();
         }
 
         /// <summary>
