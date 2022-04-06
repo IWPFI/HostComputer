@@ -23,6 +23,7 @@
             <ColumnDefinition Width="60"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <!--左侧导航栏-->
         <Border Background="#FF3269DE">
             <Grid>
                 <Grid.RowDefinitions>
@@ -40,8 +41,52 @@
                 </StackPanel>
                 <TextBlock Grid.Row="2" Text="&#xe618;" FontFamily="{StaticResource iconfont}" Foreground="White"
                            FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <Button Grid.Row="2" Height="50" Content="&#xe618;" Style="{StaticResource SettingsButtonStyle}"/>
+                <Button Grid.Row="2" Height="50" Content="&#xe795;" Style="{StaticResource SettingsButtonStyle}"/>
             </Grid>
         </Border>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Border BorderBrush="#EEE" BorderThickness="0,0,0,1"/>
+            <!--标题-->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30,0">
+                <TextBlock Text="朝夕智控    |    上位机应用基础框架" FontSize="15"/>
+            </StackPanel>
+            <!--最小化/最大化/关闭|按钮-->
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Content="&#xe650;" Background="#11000000" Tag="#333" Style="{StaticResource ControlButtonStyle}"/>
+                <Button Content="&#xe65d;" Background="#11000000" Tag="#333" Style="{StaticResource ControlButtonStyle}"/>
+                <Button Content="&#xeb6a;" Background="#FFE63535" Tag="White" Style="{StaticResource ControlButtonStyle}" 
+                        Command="{Binding CloseCommand}" CommandParameter="{Binding Path=.,RelativeSource={RelativeSource AncestorType=Window}}"/>
+            </StackPanel>
+            <!--时钟 | #digital display：为digital_display.ttf的字体名称;注意不是文件名称-->
+            <TextBlock Text="{Binding MainModel.Time}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="15,10" 
+                       FontSize="16" FontFamily="pack://application:,,,/Zhaoxi.HostComputer;component/Assets/Fonts/#digital display"/>
+
+            
+            <!--状态栏-->
+            <Border Background="#F7F9FA" Grid.Row="2" BorderBrush="#F0F4F1" BorderThickness="0,1,0,0"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20,0" Grid.Row="2">
+                <TextBlock Text="Administrator" VerticalAlignment="Center" Margin="10,0"/>
+                <Border Width="35" Height="35" CornerRadius="20" BorderThickness="2" BorderBrush="White">
+                    <Border.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/HostComputer;component/Assets/Images/9.jpg"/>
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="5" ShadowDepth="0" Direction="0" Opacity="0.3"/>
+                    </Border.Effect>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0">
+                <TextBlock Text="通信状态"/>
+                <TextBlock Text="已连接" Margin="20,0,10,0"/>
+                <Border Background="Green" Width="10" Height="10" CornerRadius="5"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

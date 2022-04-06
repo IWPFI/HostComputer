@@ -17,6 +17,7 @@ namespace HostComputer.ViewModels
         public LoginViewModel()
         {
             UserModel.UserName = "admin";
+            UserModel.Password = "123456";
         }
 
         LoginService loginService = new LoginService();
