@@ -43,5 +43,26 @@ namespace HostComputer.ViewModels
                 return _closeCommand;
             }
         }
+
+        private CommandBase _loginCommand;
+        /// <summary>
+        /// Gets the login command.
+        /// </summary>
+        /// <remarks>登录命令</remarks>
+        public CommandBase LoginCommand
+        {
+            get
+            {
+                if (_loginCommand == null)
+                {
+                    _loginCommand = new CommandBase();
+                    _loginCommand.DoExecute = new Action<object>(obj =>
+                    {
+                        (obj as System.Windows.Window).DialogResult = true;
+                    });
+                }
+                return _loginCommand;
+            }
+        }
     }
 }
