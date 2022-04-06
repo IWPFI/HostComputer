@@ -18,11 +18,24 @@
     <Window.Resources>
         <ResourceDictionary Source="/Assets/Styles/LoginWindowStyle.xaml"/>
     </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Duration="0:0:1" To="0" Storyboard.TargetName="tt" Storyboard.TargetProperty="X"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    
     <Grid Width="740" Margin="5" Background="Transparent" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
         <Border Background="#F7F9FA" Margin="0,6" HorizontalAlignment="Right" Width="330" BorderBrush="#DDD" BorderThickness="0" CornerRadius="0,5,5,0">
             <Border.Effect>
                 <DropShadowEffect Color="Black" ShadowDepth="0" Direction="0" BlurRadius="10" Opacity="0.2"/>
             </Border.Effect>
+            <Border.RenderTransform>
+                <TranslateTransform X="-350" x:Name="tt"/>
+            </Border.RenderTransform>
             <Grid HorizontalAlignment="Right" Width="230" Margin="30,30,30,10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
