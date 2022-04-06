@@ -27,5 +27,13 @@ namespace HostComputer.Views
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// the mouse left button down.
+        /// </summary>
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }
