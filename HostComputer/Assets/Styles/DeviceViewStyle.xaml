@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="AddButtonStyle" TargetType="Button">
+        <Setter Property="Content" Value="注册新设备"/>
+        <Setter Property="Width" Value="90"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="10,0"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template" Value="{DynamicResource AddButtonTemplate}"/>
+    </Style>
+    <ControlTemplate TargetType="Button" x:Key="AddButtonTemplate">
+        <Border Background="#FF3269DE" Name="back" CornerRadius="3">
+            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"
+                                  Content="{TemplateBinding Content}" TextBlock.Foreground="White"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#CC3269DE" TargetName="back"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+</ResourceDictionary>
