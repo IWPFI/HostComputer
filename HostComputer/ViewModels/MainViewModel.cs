@@ -32,7 +32,6 @@ namespace HostComputer.ViewModels
         }
 
         private CommandBase _closeCommand;
-
         /// <summary>
         /// Gets the close command.
         /// </summary>
@@ -50,6 +49,29 @@ namespace HostComputer.ViewModels
                     });
                 }
                 return _closeCommand;
+            }
+        }
+
+        private CommandBase _menuItemCommand;
+        /// <summary>
+        /// Switch menu commands.
+        /// </summary>
+        /// <remarks>切换菜单命令</remarks>
+        public CommandBase MenuItemCommand
+        {
+            get
+            {
+                if (_menuItemCommand == null)
+                {
+                    _menuItemCommand = new CommandBase();
+                    _menuItemCommand.DoExecute = new Action<object>(obj =>
+                    {
+                        //反射方法实现窗口切换
+                        Type type = Type.GetType(obj.ToString());
+                        this.MainModel.MainContent = (System.Windows.UIElement)Activator.CreateInstance(type);
+                    });
+                }
+                return _menuItemCommand;
             }
         }
     }

@@ -34,10 +34,16 @@
                 <Image Source="pack://application:,,,/HostComputer;component/Assets/Images/xiamu.jpg" Width="35"/>
 
                 <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                    <RadioButton Content="&#xe653;" Height="80" IsChecked="True" ToolTip="Dashboard" Style="{StaticResource LeftMenuItemButtonStyle}"/>
-                    <RadioButton Content="&#xe7d8;" Height="80" ToolTip="设备" Style="{StaticResource LeftMenuItemButtonStyle}"/>
-                    <RadioButton Content="&#xe601;" Height="80" ToolTip="报警" Style="{StaticResource LeftMenuItemButtonStyle}"/>
-                    <RadioButton Content="&#xe68f;" Height="80" ToolTip="报表" Style="{StaticResource LeftMenuItemButtonStyle}"/>
+                    <RadioButton Content="&#xe653;" Height="80" IsChecked="True" ToolTip="Dashboard" Style="{StaticResource LeftMenuItemButtonStyle}"
+                                 Command="{Binding MenuItemCommand}"
+                                 CommandParameter="HostComputer.Views.MonitorView"/>
+                    <RadioButton Content="&#xe7d8;" Height="80" ToolTip="设备" Style="{StaticResource LeftMenuItemButtonStyle}"
+                                 Command="{Binding MenuItemCommand}"
+                                 CommandParameter="HostComputer.Views.DeviceView"/>
+                    <RadioButton Content="&#xe601;" Height="80" ToolTip="报警" Style="{StaticResource LeftMenuItemButtonStyle}"
+                                 Command="{Binding MenuItemCommand}"/>
+                    <RadioButton Content="&#xe68f;" Height="80" ToolTip="报表" Style="{StaticResource LeftMenuItemButtonStyle}"
+                                 Command="{Binding MenuItemCommand}"/>
                 </StackPanel>
                 <TextBlock Grid.Row="2" Text="&#xe618;" FontFamily="{StaticResource iconfont}" Foreground="White"
                            FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -87,6 +93,8 @@
                 <TextBlock Text="已连接" Margin="20,0,10,0"/>
                 <Border Background="Green" Width="10" Height="10" CornerRadius="5"/>
             </StackPanel>
+
+            <ContentControl Grid.Row="1" Content="{Binding MainModel.MainContent}"/>
         </Grid>
     </Grid>
 </Window>
