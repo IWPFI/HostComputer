@@ -17,6 +17,8 @@ namespace HostComputer.ViewModels
 
         public MainViewModel()
         {
+            this.NavPage("HostComputer.Views.MonitorView");//设置首次启动时启动首页
+
             //从全局缓存中获取用户信息(用户名),设置给界面
             MainModel.UserName = "Administartor";
 
@@ -52,6 +54,16 @@ namespace HostComputer.ViewModels
             }
         }
 
+        /// <summary>
+        /// Application Switcher
+        /// </summary>
+        /// <remarks>反射方法实现窗口切换</remarks>
+        private void NavPage(string name)
+        {
+            Type type = Type.GetType(name);
+            this.MainModel.MainContent = (System.Windows.UIElement)Activator.CreateInstance(type);
+        }
+
         private CommandBase _menuItemCommand;
         /// <summary>
         /// Switch menu commands.
@@ -66,9 +78,7 @@ namespace HostComputer.ViewModels
                     _menuItemCommand = new CommandBase();
                     _menuItemCommand.DoExecute = new Action<object>(obj =>
                     {
-                        //反射方法实现窗口切换
-                        Type type = Type.GetType(obj.ToString());
-                        this.MainModel.MainContent = (System.Windows.UIElement)Activator.CreateInstance(type);
+                        NavPage(obj.ToString());
                     });
                 }
                 return _menuItemCommand;
