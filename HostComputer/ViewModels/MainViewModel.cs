@@ -17,6 +17,10 @@ namespace HostComputer.ViewModels
 
         public MainViewModel()
         {
+            //从全局缓存中获取用户信息(用户名),设置给界面
+            MainModel.UserName = "Administartor";
+
+            //设置时间
             Task.Run(async () =>
             {
                 while (true)

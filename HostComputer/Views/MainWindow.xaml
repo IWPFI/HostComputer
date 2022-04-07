@@ -71,7 +71,7 @@
             <!--状态栏-->
             <Border Background="#F7F9FA" Grid.Row="2" BorderBrush="#F0F4F1" BorderThickness="0,1,0,0"/>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20,0" Grid.Row="2">
-                <TextBlock Text="Administrator" VerticalAlignment="Center" Margin="10,0"/>
+                <TextBlock Text="{Binding MainModel.UserName}" VerticalAlignment="Center" Margin="10,0"/>
                 <Border Width="35" Height="35" CornerRadius="20" BorderThickness="2" BorderBrush="White">
                     <Border.Background>
                         <ImageBrush ImageSource="pack://application:,,,/HostComputer;component/Assets/Images/9.jpg"/>
