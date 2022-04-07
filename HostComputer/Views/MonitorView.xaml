@@ -416,5 +416,119 @@
             </Grid>
             <!--#endregion-->
         </Grid>
+
+        <Grid Grid.Row="1" Margin="30,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <!--<ComboBox SelectedIndex="0">
+                    <ComboBoxItem Content="5号生成车间"/>
+                    <ComboBoxItem Content="6号生成车间"/>
+                </ComboBox>-->
+                <Border Height="28" Width="120"  Grid.Row="2" Background="#FF0091F0" BorderBrush="#FF0091F0" BorderThickness="1" CornerRadius="3" Margin="5,0">
+                    <TextBlock Text="5号生产车间" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Border>
+                <Border Height="28" Width="120"  Grid.Row="2" Background="#FF0091F0" BorderBrush="#FF0091F0" BorderThickness="1" CornerRadius="3">
+                    <TextBlock Text="本月类别统计" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Border>
+            </StackPanel>
+            <ScrollViewer Grid.Row="1">
+                <UniformGrid Columns="1" >
+                    <Border Background="#550091F0" CornerRadius="3" Margin="5,5,10,5">
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" TextBlock.FontSize="10"
+                                                Margin="10,0">
+                                <TextBlock Foreground="White" Margin="0,4">
+                                            <Run Text="生产车间："/>
+                                            <Run Text="车间-6号"/>
+                                </TextBlock>
+                                <TextBlock Foreground="White" Margin="0,4">
+                                            <Run Text="设备编号："/>
+                                            <Run Text="设备-19号"/>
+                                </TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="76" Background="#55FFFFFF" BorderThickness="0"
+                                                 Height="12" Foreground="#FF0091F0" Margin="10,3"/>
+                                <Grid Margin="10,0" TextBlock.FontFamily="8" TextBlock.FontSize="10">
+                                    <TextBlock Text="0" HorizontalAlignment="Left" Foreground="White"/>
+                                    <TextBlock Text="76%" HorizontalAlignment="Right" Foreground="White"/>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#550091F0" CornerRadius="3" Margin="5,5,10,5">
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" TextBlock.FontSize="10"
+                                                Margin="10,0">
+                                <TextBlock Foreground="White" Margin="0,4">
+                                            <Run Text="生产车间："/>
+                                            <Run Text="车间-4号"/>
+                                </TextBlock>
+                                <TextBlock Foreground="White" Margin="0,4">
+                                            <Run Text="设备编号："/>
+                                            <Run Text="设备-19号"/>
+                                </TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="47" Background="#55FFFFFF" BorderThickness="0"
+                                                 Height="12" Foreground="#FF0091F0" Margin="10,3"/>
+                                <Grid Margin="10,0" TextBlock.FontFamily="8" TextBlock.FontSize="10">
+                                    <TextBlock Text="0" HorizontalAlignment="Left" Foreground="White"/>
+                                    <TextBlock Text="47%" HorizontalAlignment="Right" Foreground="White"/>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <Border Background="#550091F0" CornerRadius="3" Margin="5,5,10,5">
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" TextBlock.FontSize="10"
+                                                Margin="10,0">
+                                <TextBlock Foreground="White" Margin="0,4">
+                                            <Run Text="生产车间："/>
+                                            <Run Text="车间-7号"/>
+                                </TextBlock>
+                                <TextBlock Foreground="White" Margin="0,4">
+                                            <Run Text="设备编号："/>
+                                            <Run Text="设备-19号"/>
+                                </TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="67" Background="#55FFFFFF" BorderThickness="0"
+                                                 Height="12" Foreground="#FF0091F0" Margin="10,3"/>
+                                <Grid Margin="10,0" TextBlock.FontFamily="8" TextBlock.FontSize="10">
+                                    <TextBlock Text="0" HorizontalAlignment="Left" Foreground="White"/>
+                                    <TextBlock Text="67%" HorizontalAlignment="Right" Foreground="White"/>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </UniformGrid>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </UserControl>
