@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              xmlns:local="clr-namespace:HostComputer.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -16,7 +17,7 @@
             <RowDefinition Height="180"/>
         </Grid.RowDefinitions>
         <Button Style="{DynamicResource AddButtonStyle}"/>
-        
+
         <!--中间模块-->
         <Grid Grid.Row="1" Margin="20,0" DataContext="{Binding ElementName=lvDeviceList,Path=SelectedItem}">
             <Grid.ColumnDefinitions>
@@ -124,6 +125,45 @@
                 <TextBlock Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="15,0">
                     <Hyperlink Command="{Binding EditCommand}">编辑设备信息</Hyperlink>
                 </TextBlock>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region 设备管理 -->
+            <Grid Grid.Column="1" Margin="10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="[设备健康状态跟踪]" VerticalAlignment="Center"/>
+                <lvc:CartesianChart Grid.Row="1">
+                    <lvc:CartesianChart.Series>
+                        <lvc:LineSeries Stroke="#FF3269DE" PointGeometrySize="0" Values="56,60,70,76,32,54,88,34,50">
+                            <lvc:LineSeries.Fill>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#773269DE" Offset="0"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </LinearGradientBrush>
+                            </lvc:LineSeries.Fill>
+                        </lvc:LineSeries>
+                    </lvc:CartesianChart.Series>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis ShowLabels="True" Labels="5/22,5/23,5/24,5/25,5/26,5/27,5/28,5/29,5/30" 
+                                          LabelsRotation="0" FontSize="10">
+                            <lvc:Axis.Separator>
+                                <lvc:Separator Step="1" StrokeThickness="0"/>
+                            </lvc:Axis.Separator>
+                        </lvc:Axis>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis MinValue="0" ShowLabels="True" FontSize="10">
+                            <lvc:Axis.Separator>
+                                <lvc:Separator Step="20"/>
+                            </lvc:Axis.Separator>
+                        </lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
             </Grid>
             <!--#endregion-->
         </Grid>
