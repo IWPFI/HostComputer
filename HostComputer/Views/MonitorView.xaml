@@ -4,9 +4,154 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HostComputer.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" Foreground="#444" UseLayoutRounding="True" TextOptions.TextRenderingMode="ClearType"
+             d:DesignHeight="650" d:DesignWidth="1000">
     <Grid>
-        <TextBlock Text="MonitorView" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="30,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border BorderBrush="#EEE" BorderThickness="0,0,1,0"/>
+            <Border BorderBrush="#EEE" BorderThickness="0,0,1,0" Grid.Column="1"/>
+            <!--#region 基本信息 -->
+            <Grid Margin="0,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="设备运行工况" FontWeight="Bold" Foreground="#555" VerticalAlignment="Center" Margin="5,0"/>
+                <UniformGrid Columns="3" Grid.Row="1">
+                    <Border Background="White" CornerRadius="5" Margin="5">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="0" BlurRadius="3" Opacity="0.1"/>
+                        </Border.Effect>
+                        <Grid VerticalAlignment="Center" Margin="10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="当前状态" FontSize="10" Foreground="#999"/>
+                            <TextBlock Text="运行" Grid.Row="1" FontSize="14" Margin="0,3"/>
+                        </Grid>
+                    </Border>
+                    <Border Background="White" CornerRadius="5" Margin="5">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="0" BlurRadius="3" Opacity="0.1"/>
+                        </Border.Effect>
+                        <Grid VerticalAlignment="Center" Margin="10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="周运行时长" FontSize="10" Foreground="#999"/>
+                            <TextBlock Text="80h" Grid.Row="1" FontSize="14" Margin="0,3"/>
+                        </Grid>
+                    </Border>
+                    <Border Background="White" CornerRadius="5" Margin="5">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="0" BlurRadius="3" Opacity="0.1"/>
+                        </Border.Effect>
+                        <Grid VerticalAlignment="Center" Margin="10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="周关机时长" FontSize="10" Foreground="#999"/>
+                            <TextBlock Text="50h" Grid.Row="1" FontSize="14" Margin="0,3"/>
+                        </Grid>
+                    </Border>
+                    <Border Background="White" CornerRadius="5" Margin="5">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="0" BlurRadius="3" Opacity="0.1"/>
+                        </Border.Effect>
+                        <Grid VerticalAlignment="Center" Margin="10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="周待机时长" FontSize="10" Foreground="#999"/>
+                            <TextBlock Text="50h" Grid.Row="1" FontSize="14" Margin="0,3"/>
+                        </Grid>
+                    </Border>
+                    <Border Background="White" CornerRadius="5" Margin="5">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="0" BlurRadius="3" Opacity="0.1"/>
+                        </Border.Effect>
+                        <Grid VerticalAlignment="Center" Margin="10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="周故障时长" FontSize="10" Foreground="#999"/>
+                            <TextBlock Text="2h" Grid.Row="1" FontSize="14" Margin="0,3"/>
+                        </Grid>
+                    </Border>
+                    <Border Background="White" CornerRadius="5" Margin="5">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="0" BlurRadius="3" Opacity="0.1"/>
+                        </Border.Effect>
+                        <Grid VerticalAlignment="Center" Margin="10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="健康状态" FontSize="10" Foreground="#999"/>
+                            <TextBlock Text="良好" Grid.Row="1" FontSize="14" Margin="0,3"/>
+                        </Grid>
+                    </Border>
+                </UniformGrid>
+
+                <TextBlock Text="设备基本信息" Grid.Row="3" FontWeight="Bold" Foreground="#555" VerticalAlignment="Center" Margin="5,0"/>
+                <UniformGrid Grid.Row="4" Columns="3">
+                    <StackPanel Margin="5">
+                        <TextBlock Text="1.44m" FontSize="16"/>
+                        <TextBlock Text="最大工作范围" FontSize="10" Foreground="#666" Margin="0,3"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="20kg" FontSize="16"/>
+                        <TextBlock Text="有效载荷" FontSize="10" Foreground="#666" Margin="0,3"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="6J" FontSize="16"/>
+                        <TextBlock Text="有效轴数" FontSize="10" Foreground="#666" Margin="0,3"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="0.001cm" FontSize="16"/>
+                        <TextBlock Text="重复定位精确度" FontSize="10" Foreground="#666" Margin="0,3"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="2500w" FontSize="16"/>
+                        <TextBlock Text="额定功率" FontSize="10" Foreground="#666" Margin="0,3"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="5kg" FontSize="16"/>
+                        <TextBlock Text="承重能力" FontSize="10" Foreground="#666" Margin="0,3"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="2.1m/s" FontSize="16"/>
+                        <TextBlock Text="J6轴最大速度" FontSize="10" Foreground="#666" Margin="0,3"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="200-600v" FontSize="16"/>
+                        <TextBlock Text="电源电压" FontSize="10" Foreground="#666" Margin="0,3"/>
+                    </StackPanel>
+                    <StackPanel Margin="5">
+                        <TextBlock Text="225kg" FontSize="16"/>
+                        <TextBlock Text="净重" FontSize="10" Foreground="#666" Margin="0,3"/>
+                    </StackPanel>
+                </UniformGrid>
+            </Grid>
+            <!--#endregion-->
+        </Grid>
     </Grid>
 </UserControl>
