@@ -290,6 +290,108 @@
                 </UniformGrid>
             </Grid>
             <!--#endregion-->
+
+            <!--#region 事件记录 -->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="[事件统计]" VerticalAlignment="Center"/>
+                <lvc:PieChart Grid.Row="1" InnerRadius="25" Width="90" Height="90" Margin="0,10">
+                    <lvc:PieChart.Series>
+                        <lvc:PieSeries Values="22" StrokeThickness="0" Fill="Red"/>
+                        <lvc:PieSeries Values="56" StrokeThickness="0" Fill="Orange"/>
+                        <lvc:PieSeries Values="17" StrokeThickness="0" Fill="#14AAE6"/>
+                    </lvc:PieChart.Series>
+                </lvc:PieChart>
+                <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                    <TextBlock Text="95" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Orange"
+                           FontSize="16" FontWeight="Bold"/>
+                    <TextBlock Text="事件总数" HorizontalAlignment="Center" FontSize="8"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" TextBlock.FontSize="11" Margin="0,10">
+                    <Grid Margin="20,0">
+                        <Border Background="Red" Width="7" Height="7" HorizontalAlignment="Left"/>
+                        <TextBlock Text="重大事件" HorizontalAlignment="Left" Margin="20,0,0,0"/>
+                        <TextBlock Text="22" HorizontalAlignment="Right" Foreground="Orange"/>
+                    </Grid>
+                    <Grid Margin="20,10">
+                        <Border Background="Orange" Width="7" Height="7" HorizontalAlignment="Left"/>
+                        <TextBlock Text="普通事件" HorizontalAlignment="Left" Margin="20,0,0,0"/>
+                        <TextBlock Text="56" HorizontalAlignment="Right" Foreground="Orange"/>
+                    </Grid>
+                    <Grid Margin="20,0">
+                        <Border Background="#14AAE6" Width="7" Height="7" HorizontalAlignment="Left"/>
+                        <TextBlock Text="XXX嫌疑事件" HorizontalAlignment="Left" Margin="20,0,0,0"/>
+                        <TextBlock Text="17" HorizontalAlignment="Right" Foreground="Orange"/>
+                    </Grid>
+                </StackPanel>
+
+                <TextBlock Grid.Row="3" Text="[最近事件记录]" VerticalAlignment="Center"/>
+                <UniformGrid Columns="1" Grid.Row="4">
+                    <Border Background="#11000000">
+                        <Grid Margin="20,6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Ellipse Fill="red" Width="6" Height="6" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="#1 Master device" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                            <TextBlock Text="事件类型：重大事件" Grid.Row="1" FontSize="9" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                            <TextBlock Text="报警时间：2021/05/30 20:00:00" Grid.Row="2" FontSize="9" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border>
+                        <Grid Margin="20,6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Ellipse Fill="red" Width="6" Height="6" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="#1 Master device" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                            <TextBlock Text="事件类型：重大事件" Grid.Row="1" FontSize="9" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                            <TextBlock Text="报警时间：2021/05/30 20:00:00" Grid.Row="2" FontSize="9" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border Background="#11000000">
+                        <Grid Margin="20,6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Ellipse Fill="red" Width="6" Height="6" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="#1 Master device" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                            <TextBlock Text="事件类型：重大事件" Grid.Row="1" FontSize="9" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                            <TextBlock Text="报警时间：2021/05/30 20:00:00" Grid.Row="2" FontSize="9" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border>
+                        <Grid Margin="20,6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Ellipse Fill="red" Width="6" Height="6" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="#1 Master device" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                            <TextBlock Text="事件类型：重大事件" Grid.Row="1" FontSize="9" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                            <TextBlock Text="报警时间：2021/05/30 20:00:00" Grid.Row="2" FontSize="9" VerticalAlignment="Center" Margin="15,0,0,0"/>
+                        </Grid>
+                    </Border>
+                </UniformGrid>
+            </Grid>
+            <!--#endregion-->
         </Grid>
     </Grid>
 </UserControl>
