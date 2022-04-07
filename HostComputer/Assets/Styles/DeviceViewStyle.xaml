@@ -9,6 +9,67 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Template" Value="{DynamicResource AddButtonTemplate}"/>
     </Style>
+
+    <Style TargetType="RadioButton" x:Key="DeviceItemButtonStyle">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Background" Value="#DDD"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border Background="Transparent" BorderBrush="{TemplateBinding Background}" BorderThickness="1" CornerRadius="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,15">
+                                <TextBlock Text="&#xe7d8;" FontFamily="{StaticResource iconfont}"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                   FontSize="40" Foreground="#888" Name="device_icon"/>
+                                <StackPanel VerticalAlignment="Center" Margin="20,0">
+                                    <TextBlock Text="{Binding Name}" FontSize="13" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="8937-45834659" FontSize="10" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <Grid Grid.Row="1">
+                                <UniformGrid Columns="4" Grid.Column="1" TextBlock.FontSize="10" TextBlock.Foreground="#888">
+                                    <TextBlock Text="正在运行" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" Foreground="#333" FontSize="11"/>
+                                    <TextBlock>
+                                            <Run Text="电压："/>
+                                            <Run Text="220V"/>
+                                    </TextBlock>
+                                    <TextBlock>
+                                            <Run Text="电流："/>
+                                            <Run Text="220A"/>
+                                    </TextBlock>
+                                    <TextBlock>
+                                            <Run Text="温度："/>
+                                            <Run Text="220℃"/>
+                                    </TextBlock>
+                                    <Border/>
+                                    <TextBlock Text="流量：220"/>
+                                    <TextBlock Text="温度：220"/>
+                                    <TextBlock Text="时长：220"/>
+                                </UniformGrid>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Foreground" Value="#14AAE6" TargetName="device_icon"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="#14AAE6"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <ControlTemplate TargetType="Button" x:Key="AddButtonTemplate">
         <Border Background="#FF3269DE" Name="back" CornerRadius="3">
             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"
@@ -17,6 +78,54 @@
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#CC3269DE" TargetName="back"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate TargetType="Button" x:Key="FlipButtonTemplate">
+        <Grid Background="Transparent" Name="back">
+            <TextBlock Text="{Binding Content,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Button}}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                           FontSize="20" FontFamily="{StaticResource iconfont}"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#11000000" TargetName="back"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate TargetType="ToggleButton" x:Key="StateButtonTemplate">
+        <Border BorderBrush="#99EEEEEE" BorderThickness="0" CornerRadius="3" 
+                    Background="#EEE" Height="20" Width="50" Name="back">
+            <Grid>
+                <TextBlock Text="停机" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="4,0" FontSize="9" Foreground="#888"/>
+                <TextBlock Text="运行" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="4,0" FontSize="9" Foreground="White"/>
+                <Border Margin="2,2" HorizontalAlignment="Left" Width="23" Background="#DDD" CornerRadius="2">
+                    <TextBlock Text="||" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="8"/>
+                    <Border.RenderTransform>
+                        <TranslateTransform X="22" x:Name="tt"/>
+                    </Border.RenderTransform>
+                </Border>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetName="tt" Storyboard.TargetProperty="X"/>
+                            <ColorAnimation Duration="0:0:0.2" To="#38baec" Storyboard.TargetName="back" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:0.2" Storyboard.TargetName="tt" Storyboard.TargetProperty="X"/>
+                            <ColorAnimation Duration="0:0:0.2" Storyboard.TargetName="back" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
