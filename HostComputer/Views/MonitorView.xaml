@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HostComputer.Views"
+             xmlns:local="clr-namespace:HostComputer.Views" 
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" Foreground="#444" UseLayoutRounding="True" TextOptions.TextRenderingMode="ClearType"
              d:DesignHeight="650" d:DesignWidth="1000">
     <Grid>
@@ -149,6 +150,160 @@
                         <TextBlock Text="225kg" FontSize="16"/>
                         <TextBlock Text="净重" FontSize="10" Foreground="#666" Margin="0,3"/>
                     </StackPanel>
+                </UniformGrid>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region 参数分析 -->
+            <Grid Margin="10,0" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="参数分析" FontWeight="Bold" Foreground="#555" VerticalAlignment="Center" Margin="5,0"/>
+                <Border Background="White" Grid.Row="1" CornerRadius="5" Margin="5">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="3" Opacity="0.1"/>
+                    </Border.Effect>
+                </Border>
+                <UniformGrid Columns="2" Grid.Row="1">
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="[电压]" VerticalAlignment="Top"/>
+                        <lvc:CartesianChart Grid.Row="1">
+                            <lvc:CartesianChart.Series>
+                                <lvc:LineSeries Stroke="#FF7261" PointGeometrySize="0" Values="156,600,70,760,320,540,880,340,500">
+                                    <lvc:LineSeries.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="#FFE3E0" Offset="0"/>
+                                            <GradientStop Color="White" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </lvc:LineSeries.Fill>
+                                </lvc:LineSeries>
+                            </lvc:CartesianChart.Series>
+                            <lvc:CartesianChart.AxisX>
+                                <lvc:Axis ShowLabels="True" Labels="1:00,2:00,3:00,4:00,5:00,6:00,7:00,8:00,9:00" 
+                                          LabelsRotation="0" FontSize="8">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="1" StrokeThickness="0"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisX>
+                            <lvc:CartesianChart.AxisY>
+                                <lvc:Axis MinValue="0" ShowLabels="True" FontSize="8">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="200"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisY>
+                        </lvc:CartesianChart>
+                    </Grid>
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="[电流]" VerticalAlignment="Top"/>
+                        <lvc:CartesianChart Grid.Row="1">
+                            <lvc:CartesianChart.Series>
+                                <lvc:LineSeries Stroke="#FECC71"
+                                                    PointGeometrySize="0" Values="156,600,70,760,320,540,880,340,500">
+                                    <lvc:LineSeries.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="#FFF2DE" Offset="0"/>
+                                            <GradientStop Color="White" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </lvc:LineSeries.Fill>
+                                </lvc:LineSeries>
+                            </lvc:CartesianChart.Series>
+                            <lvc:CartesianChart.AxisX>
+                                <lvc:Axis ShowLabels="True" Labels="1:00,2:00,3:00,4:00,5:00,6:00,7:00,8:00,9:00" 
+                                          LabelsRotation="0" FontSize="8">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="1" StrokeThickness="0"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisX>
+                            <lvc:CartesianChart.AxisY>
+                                <lvc:Axis MinValue="0" MaxValue="1000" ShowLabels="True" FontSize="8">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="200"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisY>
+                        </lvc:CartesianChart>
+                    </Grid>
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="[负荷]" VerticalAlignment="Top"/>
+                        <lvc:CartesianChart Grid.Row="1">
+                            <lvc:CartesianChart.Series>
+                                <lvc:LineSeries Stroke="#5CD0E1" PointGeometrySize="0" Values="560,160,70,176,302,154,808,340,500">
+                                    <lvc:LineSeries.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="#DBF3F9" Offset="0"/>
+                                            <GradientStop Color="White" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </lvc:LineSeries.Fill>
+                                </lvc:LineSeries>
+                            </lvc:CartesianChart.Series>
+                            <lvc:CartesianChart.AxisX>
+                                <lvc:Axis ShowLabels="True" Labels="1:00,2:00,3:00,4:00,5:00,6:00,7:00,8:00,9:00" 
+                                          LabelsRotation="0" FontSize="8">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="1" StrokeThickness="0"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisX>
+                            <lvc:CartesianChart.AxisY>
+                                <lvc:Axis MinValue="0" MaxValue="1000" ShowLabels="True" FontSize="8">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="200"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisY>
+                        </lvc:CartesianChart>
+                    </Grid>
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="[温度]" VerticalAlignment="Top"/>
+                        <lvc:CartesianChart Grid.Row="1">
+                            <lvc:CartesianChart.Series>
+                                <lvc:LineSeries Stroke="#7ADA95" PointGeometrySize="0" Values="220,300,100,500,800,400,270,600,560">
+                                    <lvc:LineSeries.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="#EDFAF0" Offset="0"/>
+                                            <GradientStop Color="White" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </lvc:LineSeries.Fill>
+                                </lvc:LineSeries>
+                            </lvc:CartesianChart.Series>
+                            <lvc:CartesianChart.AxisX>
+                                <lvc:Axis ShowLabels="True" Labels="1:00,2:00,3:00,4:00,5:00,6:00,7:00,8:00,9:00" 
+                                          LabelsRotation="0" FontSize="8">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="1" StrokeThickness="0"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisX>
+                            <lvc:CartesianChart.AxisY>
+                                <lvc:Axis MinValue="0" MaxValue="1000" ShowLabels="True" FontSize="8">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="200"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisY>
+                        </lvc:CartesianChart>
+                    </Grid>
                 </UniformGrid>
             </Grid>
             <!--#endregion-->
