@@ -7,6 +7,9 @@
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" Foreground="#444" UseLayoutRounding="True" TextOptions.TextRenderingMode="ClearType"
              d:DesignHeight="650" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Assets/Styles/MonitorViewStyle.xaml"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -305,6 +308,111 @@
                         </lvc:CartesianChart>
                     </Grid>
                 </UniformGrid>
+            </Grid>
+            <!--#endregion-->
+
+            <!--#region 报警事件-->
+            <Grid Grid.Column="2" Margin="10,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="报警事件" FontWeight="Bold" Foreground="#555" VerticalAlignment="Center" Margin="5,0"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <RadioButton Content="本月" Style="{StaticResource TimeRangeButtonStyle}"/>
+                    <RadioButton Content="本周" Margin="10,0" IsChecked="True" Style="{StaticResource TimeRangeButtonStyle}"/>
+                    <RadioButton Content="本日" Style="{StaticResource TimeRangeButtonStyle}"/>
+                </StackPanel>
+                <UniformGrid Rows="1" Grid.Row="1">
+                    <Border Background="#FF3269DE" Margin="5" CornerRadius="5" 
+                            TextBlock.Foreground="White" TextBlock.FontSize="10">
+                        <Grid>
+                            <TextBlock Text="Alarm" Foreground="#11FFFFFF" FontSize="60" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                                       Margin="0,0,-10,-20" FontWeight="Bold"/>
+                            <Grid VerticalAlignment="Center" Margin="10,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="设备一" FontSize="14"/>
+                                <TextBlock Text="级别：警告" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                <StackPanel Grid.Row="1" Margin="0,8">
+                                    <TextBlock Text="设备运行异常"/>
+                                    <TextBlock Text="生命值较低，建议维修。"/>
+                                </StackPanel>
+                                <TextBlock Text="2021/05/30 02:00:00" Grid.Row="2" HorizontalAlignment="Right" Margin="0,10,0,0"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <Border Background="#FF3269DE" Margin="5" CornerRadius="5" 
+                            TextBlock.Foreground="White" TextBlock.FontSize="10">
+                        <Grid>
+                            <TextBlock Text="Alarm" Foreground="#11FFFFFF" FontSize="60" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                                       Margin="0,0,-10,-20" FontWeight="Bold"/>
+                            <Grid VerticalAlignment="Center" Margin="10,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="设备二" FontSize="14"/>
+                                <TextBlock Text="级别：紧急" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                <StackPanel Grid.Row="1" Margin="0,8">
+                                    <TextBlock Text="设备停止运行"/>
+                                    <TextBlock Text="生命值较低，建议维修。"/>
+                                </StackPanel>
+                                <TextBlock Text="2021/05/30 02:00:00" Grid.Row="2" HorizontalAlignment="Right" Margin="0,10,0,0"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </UniformGrid>
+
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="产量统计" FontWeight="Bold" Foreground="#555" VerticalAlignment="Center" Margin="5,0"/>
+                    <lvc:CartesianChart Grid.Row="1" Margin="10">
+                        <lvc:CartesianChart.Series>
+                            <lvc:ColumnSeries Values="22,30,10,50,80,40,27,60,56" Width="5" Fill="Orange" MaxColumnWidth="15"
+                                              DataLabels="True" Foreground="#888">
+                            </lvc:ColumnSeries>
+                        </lvc:CartesianChart.Series>
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis  Labels="1/1,1/2,1/3,1/4,1/5,1/6,1/7,1/8,1/9" FontSize="8" DisableAnimations="True">
+                                <lvc:Axis.Separator>
+                                    <lvc:Separator Step="1" StrokeThickness="0"/>
+                                </lvc:Axis.Separator>
+                            </lvc:Axis>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis x:Name="axisT" FontSize="8" >
+                                <lvc:Axis.Separator>
+                                    <lvc:Separator Step="20"/>
+                                </lvc:Axis.Separator>
+                            </lvc:Axis>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3">
+                    <TextBlock Grid.Row="3">
+                    <Run Text="今日计划产量"/>
+                    <Run Text="100"/>
+                    </TextBlock>
+                    <TextBlock Grid.Row="3" Margin="20,0">
+                    <Run Text="今日完成产量"/>
+                    <Run Text="100"/>
+                    </TextBlock>
+                    <TextBlock Grid.Row="3">
+                    <Run Text="今日完成率"/>
+                    <Run Text="100%"/>
+                    </TextBlock>
+                </StackPanel>
             </Grid>
             <!--#endregion-->
         </Grid>
