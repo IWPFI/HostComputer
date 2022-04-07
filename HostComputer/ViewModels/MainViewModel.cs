@@ -1,4 +1,5 @@
 ﻿using HostComputer.Base;
+using HostComputer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,18 @@ namespace HostComputer.ViewModels
     /// </summary>
     public class MainViewModel
     {
+        public MainModel MainModel { get; set; } = new MainModel();
+
         public MainViewModel()
         {
+            Task.Run(async () =>
+            {
+                while (true)
+                {
+                    await Task.Delay(500);
+                    this.MainModel.Time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                }
+            });
         }
 
         private CommandBase _closeCommand;
