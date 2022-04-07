@@ -20,6 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Zhaoxi.Communication">
+      <HintPath>bin\Debug\net5.0-windows\Communication-.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Assets\Fonts\digital_display.ttf" />
     <Resource Include="Assets\Fonts\iconfont.ttf" />
     <Resource Include="Assets\Images\9.jpg" />
