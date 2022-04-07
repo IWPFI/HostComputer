@@ -1,9 +1,7 @@
-﻿using System;
+﻿using HostComputer.Base;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HostComputer.Base;
+using System.Collections.ObjectModel;
 
 namespace HostComputer.Models
 {
@@ -30,11 +28,26 @@ namespace HostComputer.Models
             BaseLabels.Add(new LabelModel { Texts = "J6轴最大速度", Values = "2.1m/s" });
             BaseLabels.Add(new LabelModel { Texts = "电源电压", Values = "200-600v" });
             BaseLabels.Add(new LabelModel { Texts = "净重", Values = "225kg" });
+
+            //运行日志
+            for (int i = 0; i < 10; i++)
+            {
+                Logs.Add(new MonitorLogModel
+                {
+                    Number = (i+1).ToString("00"),
+                    DataType = "String",
+                    RecordTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                    DeviceName = "设备1",
+                    Value = "90",
+                    Status = "紧急"
+                });
+            }
         }
 
         public List<LabelModel> RunLabels { get; set; } = new List<LabelModel>();
         public List<LabelModel> BaseLabels { get; set; } = new List<LabelModel>();
-       
 
+        //如果需要时行集合项数量的改变.
+        public ObservableCollection<MonitorLogModel> Logs { get; set; } = new ObservableCollection<MonitorLogModel>();
     }
 }

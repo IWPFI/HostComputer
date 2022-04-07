@@ -12,14 +12,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Assets/Styles/MonitorViewStyle.xaml"/>
-                <ResourceDictionary>
-                    <x:Array x:Key="datatest" Type="sys:String">
-                        <sys:String>123456</sys:String>
-                        <sys:String>123456</sys:String>
-                        <sys:String>123456</sys:String>
-                        <sys:String>123456</sys:String>
-                    </x:Array> 
-                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -461,27 +453,56 @@
                             </StackPanel>
                         </Grid>
                     </Border>
+
+                    <Border Background="#550091F0" CornerRadius="3" Margin="5,5,10,5">
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" TextBlock.FontSize="10"
+                                                Margin="10,0">
+                                <TextBlock Foreground="White" Margin="0,4">
+                                            <Run Text="生产车间："/>
+                                            <Run Text="车间-7号"/>
+                                </TextBlock>
+                                <TextBlock Foreground="White" Margin="0,4">
+                                            <Run Text="设备编号："/>
+                                            <Run Text="设备-19号"/>
+                                </TextBlock>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="67" Background="#55FFFFFF" BorderThickness="0"
+                                                 Height="12" Foreground="#FF0091F0" Margin="10,3"/>
+                                <Grid Margin="10,0" TextBlock.FontFamily="8" TextBlock.FontSize="10">
+                                    <TextBlock Text="0" HorizontalAlignment="Left" Foreground="White"/>
+                                    <TextBlock Text="67%" HorizontalAlignment="Right" Foreground="White"/>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
                 </UniformGrid>
             </ScrollViewer>
 
             <TextBlock Grid.Column="1" Text="设备运行日志记录" FontWeight="Bold" Foreground="#555" VerticalAlignment="Top" Margin="15,0"/>
-            <DataGrid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{StaticResource datatest}" Margin="15,0,5,5" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <DataGrid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding Logs}" Margin="15,0,5,5" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="序号" Width="60" Binding="{Binding [0]}"/>
-                    <DataGridTextColumn Header="数据类型" Width="*" Binding="{Binding [1]}"/>
-                    <DataGridTextColumn Header="记录日期" Width="*" Binding="{Binding [3]}"/>
-                    <DataGridTextColumn Header="设备名称" Width="*" Binding="{Binding}"/>
-                    <DataGridTextColumn Header="温度值" Width="*" Binding="{Binding}"/>
-                    <DataGridTextColumn Header="Status" Width="*" Binding="{Binding}"/>
+                    <DataGridTextColumn Header="序号" Width="60" Binding="{Binding Number}"/>
+                    <DataGridTextColumn Header="数据类型" Width="*" Binding="{Binding DataType}"/>
+                    <DataGridTextColumn Header="记录日期" Width="*" Binding="{Binding RecordTime}"/>
+                    <DataGridTextColumn Header="设备名称" Width="*" Binding="{Binding DeviceName}"/>
+                    <DataGridTextColumn Header="温度值" Width="*" Binding="{Binding Value}"/>
+                    <DataGridTextColumn Header="状态" Width="*" Binding="{Binding Status}"/>
                     <DataGridTemplateColumn Header="操作" Width="120">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock>
-                                    <Hyperlink Command="{Binding}" CommandParameter="{Binding}">操作</Hyperlink>
+                                    <Hyperlink Command="{Binding DetailCommand}">详情</Hyperlink>
                                     </TextBlock>
                                     <TextBlock Margin="5,0">
-                                    <Hyperlink Command="{Binding}" CommandParameter="{Binding}">操作</Hyperlink>
+                                    <Hyperlink Command="{Binding}" CommandParameter="{Binding}">删除</Hyperlink>
                                     </TextBlock>
                                 </StackPanel>
                             </DataTemplate>
