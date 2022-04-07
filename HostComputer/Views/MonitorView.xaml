@@ -4,11 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HostComputer.Views" 
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" Foreground="#444" UseLayoutRounding="True" TextOptions.TextRenderingMode="ClearType"
              d:DesignHeight="650" d:DesignWidth="1000">
     <UserControl.Resources>
-        <ResourceDictionary Source="/Assets/Styles/MonitorViewStyle.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Assets/Styles/MonitorViewStyle.xaml"/>
+                <ResourceDictionary>
+                    <x:Array x:Key="datatest" Type="sys:String">
+                        <sys:String>123456</sys:String>
+                        <sys:String>123456</sys:String>
+                        <sys:String>123456</sys:String>
+                        <sys:String>123456</sys:String>
+                    </x:Array> 
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -529,6 +542,32 @@
                     </Border>
                 </UniformGrid>
             </ScrollViewer>
+
+            <TextBlock Grid.Column="1" Text="设备运行日志记录" FontWeight="Bold" Foreground="#555" VerticalAlignment="Top" Margin="15,0"/>
+            <DataGrid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{StaticResource datatest}" Margin="15,0,5,5" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="序号" Width="60" Binding="{Binding [0]}"/>
+                    <DataGridTextColumn Header="数据类型" Width="*" Binding="{Binding [1]}"/>
+                    <DataGridTextColumn Header="记录日期" Width="*" Binding="{Binding [3]}"/>
+                    <DataGridTextColumn Header="设备名称" Width="*" Binding="{Binding}"/>
+                    <DataGridTextColumn Header="温度值" Width="*" Binding="{Binding}"/>
+                    <DataGridTextColumn Header="Status" Width="*" Binding="{Binding}"/>
+                    <DataGridTemplateColumn Header="操作" Width="120">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock>
+                                    <Hyperlink Command="{Binding}" CommandParameter="{Binding}">操作</Hyperlink>
+                                    </TextBlock>
+                                    <TextBlock Margin="5,0">
+                                    <Hyperlink Command="{Binding}" CommandParameter="{Binding}">操作</Hyperlink>
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 </UserControl>
