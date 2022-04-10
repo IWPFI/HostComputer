@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace HostComputer.ViewModels
 {
@@ -51,6 +53,47 @@ namespace HostComputer.ViewModels
                     });
                 }
                 return _closeCommand;
+            }
+        }
+
+        private CommandBase _maxCommand;
+        /// <summary>
+        /// 窗口最大化
+        /// </summary>
+        public CommandBase MaxCommand
+        {
+            get
+            {
+                if (_maxCommand == null)
+                {
+                    _maxCommand = new CommandBase();
+                    _maxCommand.DoExecute = new Action<object>(obj =>
+                    {
+                        (obj as System.Windows.Window).WindowState = (obj as System.Windows.Window).WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+                    });
+                }
+                return _maxCommand;
+            }
+        }
+
+
+        private CommandBase _minCommand;
+        /// <summary>
+        /// 窗口最小化
+        /// </summary>
+        public CommandBase MinCommand
+        {
+            get
+            {
+                if (_minCommand == null)
+                {
+                    _minCommand = new CommandBase();
+                    _minCommand.DoExecute = new Action<object>(obj =>
+                    {
+                        (obj as System.Windows.Window).WindowState = WindowState.Minimized;
+                    });
+                }
+                return _minCommand;
             }
         }
 

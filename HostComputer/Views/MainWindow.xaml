@@ -64,8 +64,10 @@
             </StackPanel>
             <!--最小化/最大化/关闭|按钮-->
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Content="&#xe650;" Background="#11000000" Tag="#333" Style="{StaticResource ControlButtonStyle}"/>
-                <Button Content="&#xe65d;" Background="#11000000" Tag="#333" Style="{StaticResource ControlButtonStyle}"/>
+                <Button Content="&#xe650;" Background="#11000000" Tag="#333" Style="{StaticResource ControlButtonStyle}"
+                        Command="{Binding MinCommand}" CommandParameter="{Binding Path=.,RelativeSource={RelativeSource AncestorType=Window}}"/>
+                <Button Content="&#xe65d;" Background="#11000000" Tag="#333" Style="{StaticResource ControlButtonStyle}" 
+                        Command="{Binding MaxCommand}" CommandParameter="{Binding Path=.,RelativeSource={RelativeSource AncestorType=Window}}"/>
                 <Button Content="&#xeb6a;" Background="#FFE63535" Tag="White" Style="{StaticResource ControlButtonStyle}" 
                         Command="{Binding CloseCommand}" CommandParameter="{Binding Path=.,RelativeSource={RelativeSource AncestorType=Window}}"/>
             </StackPanel>
