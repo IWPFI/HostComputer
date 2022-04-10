@@ -36,7 +36,7 @@
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="设备详情" VerticalAlignment="Center" FontSize="14"/>
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1" DataContext="{Binding ElementName=lvDeviceList,Path=SelectedItem}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"/>
                         <RowDefinition/>
@@ -60,7 +60,7 @@
                         </StackPanel>
                     </Border>
 
-                    <Grid Grid.Row="2" Margin="10,20,0,20" DataContext="{Binding ElementName=lvDeviceList,Path=SelectedItem}">
+                    <Grid Grid.Row="2" Margin="10,20,0,20">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1.5*"/>
                             <ColumnDefinition Width="2*"/>

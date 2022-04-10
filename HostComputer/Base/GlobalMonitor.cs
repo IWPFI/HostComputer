@@ -63,7 +63,6 @@ namespace HostComputer.Base
         public static void Stop()
         {
             isRunning = false;
-            //mainTask.ContinueWith();
             mainTask.ConfigureAwait(true);
         }
     }
