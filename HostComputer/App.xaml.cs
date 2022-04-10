@@ -21,7 +21,7 @@ namespace HostComputer
             base.OnStartup(e);
 
             GlobalMonitor.Start();
-            
+
             if (new LoginWindow().ShowDialog() == true)
             {
                 new MainWindow().ShowDialog();

@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:base="clr-namespace:HostComputer.Base"
              xmlns:local="clr-namespace:HostComputer.Views"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <ResourceDictionary Source="/Assets/Styles/DeviceViewStyle.xaml"/>
@@ -19,7 +20,7 @@
         <Button Style="{DynamicResource AddButtonStyle}"/>
 
         <!--中间模块-->
-        <Grid Grid.Row="1" Margin="20,0" DataContext="{Binding ElementName=lvDeviceList,Path=SelectedItem}">
+        <Grid Grid.Row="1" Margin="20,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="2*"/>
@@ -55,11 +56,11 @@
                             <TextBlock Text="&#xe648;" FontFamily="{StaticResource iconfont}" FontSize="50" Foreground="#14AAE6" 
                                        HorizontalAlignment="Center"/>
                             <TextBlock Text="{Binding Name}" Margin="0,10" FontWeight="Bold"/>
-                            <TextBlock Text="8937-45834659" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding SN}" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Border>
 
-                    <Grid Grid.Row="2" Margin="10,20,0,20">
+                    <Grid Grid.Row="2" Margin="10,20,0,20" DataContext="{Binding ElementName=lvDeviceList,Path=SelectedItem}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1.5*"/>
                             <ColumnDefinition Width="2*"/>
@@ -347,7 +348,7 @@
                             <TextBlock Text="报警时间：2021/05/30 20:00:00" Grid.Row="2" FontSize="9" VerticalAlignment="Center" Margin="15,0,0,0"/>
                         </Grid>
                     </Border>
-                    
+
                     <Border>
                         <Grid Margin="20,6">
                             <Grid.RowDefinitions>
@@ -361,7 +362,7 @@
                             <TextBlock Text="报警时间：2021/05/30 20:00:00" Grid.Row="2" FontSize="9" VerticalAlignment="Center" Margin="15,0,0,0"/>
                         </Grid>
                     </Border>
-                    
+
                     <Border Background="#11000000">
                         <Grid Margin="20,6">
                             <Grid.RowDefinitions>
@@ -375,7 +376,7 @@
                             <TextBlock Text="报警时间：2021/05/30 20:00:00" Grid.Row="2" FontSize="9" VerticalAlignment="Center" Margin="15,0,0,0"/>
                         </Grid>
                     </Border>
-                    
+
                     <Border>
                         <Grid Margin="20,6">
                             <Grid.RowDefinitions>
@@ -393,7 +394,7 @@
             </Grid>
             <!--#endregion-->
         </Grid>
-        
+
         <!--设备列表-->
         <Grid Grid.Row="2" Margin="10,0">
             <Grid.RowDefinitions>
@@ -411,13 +412,88 @@
             <Button Content="&#xe642;" Grid.Row="1" Margin="0,5" Template="{StaticResource FlipButtonTemplate}"/>
             <Button Content="&#xe641;" Grid.Row="1" Grid.Column="2" Margin="0,5" Template="{StaticResource FlipButtonTemplate}"/>
 
-            <UniformGrid Rows="1" Grid.Column="1" Grid.Row="1">
+
+            <!--<UniformGrid Rows="1" Grid.Column="1" Grid.Row="1" >
                 <RadioButton IsChecked="True" Style="{StaticResource DeviceItemButtonStyle}"/>
                 <RadioButton Style="{StaticResource DeviceItemButtonStyle}"/>
                 <RadioButton Style="{StaticResource DeviceItemButtonStyle}"/>
                 <RadioButton Style="{StaticResource DeviceItemButtonStyle}"/>
-            </UniformGrid>
-           
+            </UniformGrid>-->
+            
+            <ListView Name="lvDeviceList" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Path=(base:GlobalMonitor.DeviceList)}" 
+                      BorderThickness="0" Background="Transparent" SelectedIndex="0">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="1"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Margin" Value="0"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border Background="Transparent" BorderBrush="#DDD" BorderThickness="1" CornerRadius="5" Margin="5" Name="bor">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,15">
+                                                <TextBlock Text="&#xe661;" FontFamily="{StaticResource iconfont}"
+                                                               VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                               FontSize="40" Foreground="#888" Name="device_icon"/>
+                                                <StackPanel VerticalAlignment="Center" Margin="20,0">
+                                                    <TextBlock Text="{Binding Name}" FontSize="13" HorizontalAlignment="Center"/>
+                                                    <TextBlock Text="{Binding SN}" FontSize="10" Margin="0,5,0,0" HorizontalAlignment="Center"/>
+                                                </StackPanel>
+                                            </StackPanel>
+
+                                            <Grid Grid.Row="1">
+                                                <UniformGrid Columns="4" Grid.Column="1" TextBlock.FontSize="10" TextBlock.Foreground="#888">
+                                                    <TextBlock Text="正在运行" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" Foreground="#333" FontSize="11"/>
+                                                    <TextBlock>
+                                                            <Run Text="电压："/>
+                                                            <Run Text="220V"/>
+                                                    </TextBlock>
+                                                    <TextBlock>
+                                                            <Run Text="电流："/>
+                                                            <Run Text="220A"/>
+                                                    </TextBlock>
+                                                    <TextBlock>
+                                                            <Run Text="温度："/>
+                                                            <Run Text="220℃"/>
+                                                    </TextBlock>
+                                                    <Border/>
+                                                    <TextBlock Text="流量：220"/>
+                                                    <TextBlock Text="温度：220"/>
+                                                    <TextBlock Text="时长：220"/>
+                                                </UniformGrid>
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <!--鼠标悬停-->
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <!--value中写你要的颜色的值-->
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="true">
+                                            <!--选中-->
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="BorderBrush" Value="#14AAE6" TargetName="bor"/>
+                                            <Setter Property="Foreground" Value="#14AAE6" TargetName="device_icon"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
         </Grid>
     </Grid>
 </UserControl>

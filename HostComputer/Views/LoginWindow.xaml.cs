@@ -22,7 +22,7 @@ namespace HostComputer.Views
     {
         public LoginWindow()
         {
-            InitializeComponent(); 
+            InitializeComponent();
             this.DataContext = new LoginViewModel();
         }
 

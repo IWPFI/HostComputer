@@ -10,25 +10,26 @@ namespace HostComputer.Models
 {
     public class DeviceModel : NotifyBase
     {
-        //private CommandBase _editCommand;
-        ///// <summary>
-        ///// 打开编辑窗口
-        ///// </summary>
-        //public CommandBase EditCommand
-        //{
-        //    get
-        //    {
-        //        if (_editCommand == null)
-        //        {
-        //            _editCommand = new CommandBase();
-        //            _editCommand.DoExecute = new Action<object>(obj =>
-        //            {
-        //                WindowManager.ShowDialog("DeviceEditWindow", this);
-        //            });
-        //        }
-        //        return _editCommand;
-        //    }
-        //}
+        private CommandBase _editCommand;
+        /// <summary>
+        /// 打开编辑窗口
+        /// </summary>
+        public CommandBase EditCommand
+        {
+            get
+            {
+                if (_editCommand == null)
+                {
+                    _editCommand = new CommandBase();
+                    _editCommand.DoExecute = new Action<object>(obj =>
+                    {
+                        //不能直接访问子元素
+                        WindowManager.ShowDialog("DeviceEditWindow", this);//只是打开窗口
+                    });
+                }
+                return _editCommand;
+            }
+        }
 
 
         private string _name;

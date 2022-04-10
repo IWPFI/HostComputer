@@ -13,7 +13,7 @@
         WindowStyle="None"
         AllowsTransparency="True" 
         WindowStartupLocation="CenterScreen"
-        SizeToContent="WidthAndHeight"   
+        SizeToContent="WidthAndHeight"
         Title="LoginWindow">
     <Window.Resources>
         <ResourceDictionary Source="/Assets/Styles/LoginWindowStyle.xaml"/>

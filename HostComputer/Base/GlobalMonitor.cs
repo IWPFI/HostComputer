@@ -24,7 +24,8 @@ namespace HostComputer.Base
                 DeviceService deviceService = new DeviceService();
                 var list = deviceService.GetDevices();
                 if (list != null)
-                    DeviceList = new ObservableCollection<DeviceModel>(list);
+                    list.ForEach(l => DeviceList.Add(l));
+                    //DeviceList = new ObservableCollection<DeviceModel>(list);
 
                 while (isRunning)
                 {
@@ -62,6 +63,7 @@ namespace HostComputer.Base
         public static void Stop()
         {
             isRunning = false;
+            //mainTask.ContinueWith();
             mainTask.ConfigureAwait(true);
         }
     }

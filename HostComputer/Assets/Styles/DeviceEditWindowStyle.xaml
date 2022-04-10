@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/HostComputer;component/Assets/Styles/ComboBoxStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HostComputer;component/Assets/Styles/LeftTabControlStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="Button" x:Key="ControlButtonStyle">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Background="Transparent" Height="30" Width="45" Name="back">
+                        <Border Name="hover" Background="{TemplateBinding Background}" Visibility="Collapsed"/>
+                        <TextBlock Text="{TemplateBinding Content}" FontFamily="{StaticResource iconfont}" 
+                                       VerticalAlignment="Center" HorizontalAlignment="Center" Name="txt"
+                                       Foreground="White"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Visibility" Value="Visible" TargetName="hover"/>
+
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{Binding Tag,RelativeSource={RelativeSource Mode=Self}}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <ControlTemplate TargetType="Button" x:Key="AddButtonTemplate">
+        <Border Background="{TemplateBinding Background}" CornerRadius="3">
+            <Border Name="back">
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"
+                                  Content="{TemplateBinding Content}" TextBlock.Foreground="White"/>
+            </Border>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#22000000" TargetName="back"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <x:Array Type="sys:String" x:Key="datas">
+        <sys:String>1</sys:String>
+        <sys:String>2</sys:String>
+        <sys:String>3</sys:String>
+        <sys:String>4</sys:String>
+        <sys:String>5</sys:String>
+        <sys:String>6</sys:String>
+        <sys:String>7</sys:String>
+    </x:Array>
+</ResourceDictionary>

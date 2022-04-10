@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HostComputer.Base;
+using HostComputer.Models;
 
 namespace HostComputer.DataAccess
 {

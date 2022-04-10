@@ -1,4 +1,5 @@
-﻿using HostComputer.ViewModels;
+﻿using HostComputer.Base;
+using HostComputer.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace HostComputer.Views
         {
             InitializeComponent();
             this.DataContext = new MainViewModel();
+            WindowManager.Register<DeviceEditWindow>("DeviceEditWindow");//注册窗口
         }
 
         /// <summary>
