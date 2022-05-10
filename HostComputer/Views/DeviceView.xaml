@@ -421,7 +421,7 @@
             </UniformGrid>-->
             
             <ListView Name="lvDeviceList" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Path=(base:GlobalMonitor.DeviceList)}" 
-                      BorderThickness="0" Background="Transparent" SelectedIndex="0">
+                      BorderThickness="0" Background="Transparent" SelectedIndex="0" d:ItemsSource="{d:SampleData ItemCount=5}">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Rows="1"/>

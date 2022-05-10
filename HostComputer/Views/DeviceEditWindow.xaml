@@ -34,7 +34,7 @@
                            FontSize="18"/>
             </StackPanel>
 
-            <Button Content="&#xe653;" Style="{StaticResource ControlButtonStyle}" Background="#11000000" Tag="#333" Height="33" VerticalAlignment="Top"
+            <Button Content="&#xeb6a;" Style="{StaticResource ControlButtonStyle}" Background="#11000000" Tag="#333" Height="33" VerticalAlignment="Top"
                     HorizontalAlignment="Right" Click="Button_Click"/>
 
             <TabControl Grid.Row="1" BorderThickness="0" Margin="0,20">

@@ -121,7 +121,8 @@ namespace HostComputer.ViewModels
                     _menuItemCommand = new CommandBase();
                     _menuItemCommand.DoExecute = new Action<object>(obj =>
                     {
-                        NavPage(obj.ToString());
+                        if(obj!=null)
+                            NavPage(obj.ToString());
                     });
                 }
                 return _menuItemCommand;

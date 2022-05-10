@@ -18,7 +18,7 @@ namespace HostComputer.Base
 
         public static void Start()//开始监控
         {
-            Task.Run(async () =>
+            mainTask = Task.Run(async () =>
             {
                 //获取设备信息
                 DeviceService deviceService = new DeviceService();

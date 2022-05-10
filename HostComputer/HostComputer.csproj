@@ -5,6 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>WPFBC.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +13,10 @@
     <None Remove="Assets\Fonts\iconfont.ttf" />
     <None Remove="Assets\Images\9.jpg" />
     <None Remove="Assets\Images\xiamu.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="WPFBC.ico" />
   </ItemGroup>
 
   <ItemGroup>
