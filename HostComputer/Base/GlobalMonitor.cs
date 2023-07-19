@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using HostComputer.Models;
 using HostComputer.Service;
+using HslCommunication;
+using HslCommunication.Profinet.Siemens;
 
 namespace HostComputer.Base
 {
@@ -25,7 +27,7 @@ namespace HostComputer.Base
                 var list = deviceService.GetDevices();
                 if (list != null)
                     list.ForEach(l => DeviceList.Add(l));
-                    //DeviceList = new ObservableCollection<DeviceModel>(list);
+                //DeviceList = new ObservableCollection<DeviceModel>(list);
 
                 while (isRunning)
                 {
@@ -35,25 +37,25 @@ namespace HostComputer.Base
                     {
                         if (item.ProtocolType == 2 && item.S7 != null)// S7通信
                         {
-                            //创建S7通信对象
-                            Zhaoxi.Communication.Siemens.S7Net s7Net = new Zhaoxi.Communication.Siemens.S7Net(item.S7.IP, item.S7.Port, (byte)item.S7.Rock, (byte)item.S7.Slot);
+                            ////创建S7通信对象
+                            //Communication.Siemens.S7Net s7Net = new Communication.Siemens.S7Net(item.S7.IP, item.S7.Port, (byte)item.S7.Rock, (byte)item.S7.Slot);
 
-                            //整理存储区地址
-                            //VW100   DB.DBW100
-                            //List<string> { "VW100", "DB.DBW100"}
-                            List<string> addrList = item.MonitorValueList.Select(v => v.Address).ToList();
-                            //通信协议处理
-                            var result = s7Net.Read<ushort>(addrList);
-                            //数据List
-                            if (result.IsSuccessed)
-                            {
-                                for (int i = 0; i < item.MonitorValueList.Count; i++)
-                                {
-                                    item.MonitorValueList[i].Value = result.Datas[i];
-                                }
-                            }
-                            //连接关闭
-                            s7Net.Close();
+                            ////整理存储区地址
+                            ////VW100   DB.DBW100
+                            ////List<string> { "VW100", "DB.DBW100"}
+                            //List<string> addrList = item.MonitorValueList.Select(v => v.Address).ToList();
+                            ////通信协议处理
+                            //var result = s7Net.Read<ushort>(addrList);
+                            ////数据List
+                            //if (result.IsSuccessed)
+                            //{
+                            //    for (int i = 0; i < item.MonitorValueList.Count; i++)
+                            //    {
+                            //        item.MonitorValueList[i].Value = result.Datas[i];
+                            //    }
+                            //}
+                            ////连接关闭
+                            //s7Net.Close();
                         }
                     }
                 }

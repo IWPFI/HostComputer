@@ -21,12 +21,13 @@
 
   <ItemGroup>
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <PackageReference Include="WPF.UI" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Zhaoxi.Communication">
-      <HintPath>bin\Debug\net5.0-windows\Communication-.dll</HintPath>
+    <Reference Include="HslCommunication">
+      <HintPath>..\..\PLCDEMO\CarrierPlateLoader\CarrierPlateLoader\Assets\DLL\HslCommunication.dll</HintPath>
     </Reference>
   </ItemGroup>
 
