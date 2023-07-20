@@ -1,5 +1,6 @@
 ﻿using HostComputer.Base;
 using HostComputer.Views;
+using HslCommunication.Profinet.Siemens;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -22,10 +23,14 @@ namespace HostComputer
 
             GlobalMonitor.Start();
 
-            if (new LoginWindow().ShowDialog() == true)
-            {
-                new MainWindow().ShowDialog();
-            }
+
+            SiemensS7Net S7Net = new SiemensS7Net(SiemensPLCS.S1200, "127.0.0.1");
+            S7Net.Read("D101", 1);
+
+            //if (new LoginWindow().ShowDialog() == true)
+            //{
+            new MainWindow().ShowDialog();
+            //}
             Application.Current.Shutdown();
         }
 
